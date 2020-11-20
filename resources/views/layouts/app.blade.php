@@ -14,10 +14,16 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="{{ URL::to('/') }}">Todos App</a>
-      <a class="navbar-brand" href="{{ URL::to('todos') }}">Todos</a>
+      <a class="navbar-brand" href="{{ URL::to('/todos') }}">Todos</a>
+      <a class="navbar-brand" href="{{ URL::to('/new-todos') }}">Create Todos</a>
     </nav>
     <div class="container">
-       @yield('content')
+        @if (session()->has('success'))
+          <div class="alert alert-success">
+            {{ session()->get('success') }}
+          </div>
+        @endif
+        @yield('content')
     </div>    
   </body>
 </html>

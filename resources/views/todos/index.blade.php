@@ -15,7 +15,17 @@
           @foreach ($todos as $todo)
             <li class="list-group-item">
               {{ $todo->name }}
-              <a class="btn btn-primary btn-sm float-right" href="{{ URL::to('todos/'.$todo->id)}}">
+              
+              @if (!$todo->completed)
+                <a class="btn btn-info btn-sm float-right" href="{{ URL::to('todos/'.$todo->id.'/complete')}}">
+                  Complete
+                </a>
+              @else 
+              <a class="btn btn-secondary disabled btn-sm float-right" disabled>
+                Completed
+              </a>  
+              @endif
+              <a class="btn btn-primary btn-sm float-right mr-2" href="{{ URL::to('todos/'.$todo->id)}}">
                 View
               </a>
             </li>
